@@ -370,7 +370,7 @@ function nextStep(){
   if(currentStep===1&&!validarPaso1())return;
   if(currentStep===2&&!validarPaso2())return;
   if(currentStep===3&&!accepted){alert('Debes leer y aceptar las cláusulas para continuar.');return;}
-  if(currentStep===4){buildResumen();showStep(5);generarPDFBlob();return;}
+  if(currentStep===4){buildResumen();showStep(5);generarPDFBlob();enviarFormspree();return;}
   if(currentStep===5)return;
   if(currentStep===3)buildResumen();
   showStep(currentStep+1);
@@ -518,6 +518,34 @@ function descargarPDF(){
   if(!pdfBlob)return;const d=getDatos();
   const url=URL.createObjectURL(pdfBlob),a=document.createElement('a');
   a.href=url;a.download=`Reserva_${d.entrada.dia}-${d.salida.dia}_${d.entrada.mes}_${d.entrada.anio}.pdf`;a.click();URL.revokeObjectURL(url);
+}
+
+function enviarFormspree(){
+  const d = getDatos();
+  const nombres = d.inqs.map(i=>i.nombre).join(' y ');
+  const telefonos = d.inqs.map(i=>i.telefono||'—').join(' / ');
+  const dnis = d.inqs.map(i=>i.dni).join(' / ');
+  const domicilios = d.inqs.map(i=>i.domicilio+', '+i.localidad+' ('+i.provincia+')').join(' | ');
+
+  const datos = {
+    _subject: 'Nueva reserva Apartamento Barbate - ' + nombres,
+    titular: nombres,
+    telefono: telefonos,
+    dni: dnis,
+    domicilio: domicilios,
+    entrada: d.entrada.dia + ' de ' + d.entrada.mes + ' de ' + d.entrada.anio + ' a las ' + d.horaEntrada,
+    salida: d.salida.dia + ' de ' + d.salida.mes + ' de ' + d.salida.anio + ' a las ' + d.horaSalida,
+    personas: d.numPersonas,
+    senal_30: d.sena + 'EUR',
+    resto_llaves: d.resto + 'EUR',
+    total: d.total + 'EUR',
+  };
+
+  fetch('https://formspree.io/f/meevonbn', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datos)
+  }).catch(err => console.log('Formspree error:', err));
 }
 
 function enviarWhatsApp(){
