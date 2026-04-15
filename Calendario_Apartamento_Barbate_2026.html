@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#1a3a5c"/>
+<title>Calendario · Barbate 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#1a3a5c;--navy2:#2c5f8a;--sand:#f5f0e8;--gold:#c8a84b;--white:#fff;--muted:#7a8a9a;--border:#dde4ed;--libre:#e8f5e9;--libre-t:#2e7d5e;--ocupado:#ffebee;--ocupado-t:#c62828;--entrada:#fff3e0;--entrada-t:#e65100;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--navy);-webkit-font-smoothing:antialiased;}
+
+/* HEADER */
+.hero{background:var(--navy);padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 0%,rgba(200,168,75,.18),transparent 60%);}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(200,168,75,.15);border:1px solid rgba(200,168,75,.3);border-radius:100px;padding:4px 12px;font-size:10px;font-weight:600;letter-spacing:2px;color:#e8c96a;text-transform:uppercase;margin-bottom:10px;position:relative;}
+.hero-title{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:4px;position:relative;}
+.hero-sub{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1.5px;text-transform:uppercase;position:relative;}
+.gold-line{width:40px;height:2px;background:var(--gold);margin:12px auto 0;border-radius:2px;position:relative;}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:16px;max-width:600px;margin:0 auto;}
+.stat{background:var(--white);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 12px rgba(26,58,92,.08);border:1px solid var(--border);}
+.stat .val{font-family:'Playfair Display',serif;font-size:26px;color:var(--navy);display:block;line-height:1;}
+.stat .lbl{font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
+.stat.ocupado .val{color:var(--ocupado-t);}
+.stat.libre .val{color:var(--libre-t);}
+
+/* LEYENDA */
+.leyenda{display:flex;justify-content:center;gap:16px;padding:0 16px 12px;flex-wrap:wrap;}
+.ley-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--navy);}
+.ley-dot{width:14px;height:14px;border-radius:4px;}
+.ley-dot.libre{background:var(--libre-t);}
+.ley-dot.ocupado{background:var(--ocupado-t);}
+.ley-dot.hoy{background:var(--gold);}
+
+/* WRAP */
+.wrap{max-width:600px;margin:0 auto;padding:0 14px 30px;}
+
+/* MES */
+.mes-card{background:var(--white);border-radius:16px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 16px rgba(26,58,92,.08);border:1px solid var(--border);}
+.mes-header{background:var(--navy);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
+.mes-nombre{font-family:'Playfair Display',serif;font-size:16px;color:#fff;}
+.mes-badge{font-size:10px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.5);text-transform:uppercase;}
+.mes-libre{font-size:11px;color:#81c784;font-weight:500;}
+.mes-ocupado{font-size:11px;color:#ef9a9a;font-weight:500;}
+
+/* GRID CALENDARIO */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:10px;}
+.cal-header{text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:6px 2px;letter-spacing:.5px;}
+.cal-header.weekend{color:var(--navy2);}
+.dia{border-radius:8px;padding:8px 4px;text-align:center;font-size:13px;font-weight:500;min-height:36px;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .15s;}
+.dia.vacio{background:transparent;}
+.dia.libre{background:var(--libre);color:var(--libre-t);}
+.dia.ocupado{background:var(--ocupado);color:var(--ocupado-t);font-weight:700;}
+.dia.entrada{background:var(--entrada);color:var(--entrada-t);font-weight:700;border:2px solid var(--entrada-t);}
+.dia.salida{background:var(--entrada);color:var(--entrada-t);font-weight:700;border:2px dashed var(--entrada-t);}
+.dia.hoy{background:var(--gold);color:var(--navy);font-weight:700;}
+.dia:not(.vacio):hover{transform:scale(1.08);}
+
+/* TOOLTIP */
+.dia[data-tip]{position:relative;cursor:pointer;}
+.tooltip{display:none;position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:10px;padding:6px 10px;border-radius:8px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--navy);}
+.dia[data-tip]:hover .tooltip{display:block;}
+
+/* RESERVAS LIST */
+.reservas-section{margin-top:4px;}
+.reservas-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:12px;padding:0 2px;}
+.reserva-card{background:var(--white);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 14px rgba(26,58,92,.08);border:1px solid var(--border);}
+.res-header{background:var(--navy);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.res-num{font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.6);text-transform:uppercase;}
+.res-estado{font-size:10px;font-weight:600;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:100px;color:#fff;}
+.res-body{padding:14px 16px;}
+.res-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.res-row:last-child{border-bottom:none;padding-bottom:0;}
+.res-k{color:var(--muted);font-size:11px;font-weight:500;}
+.res-v{font-weight:600;color:var(--navy);text-align:right;}
+.res-v.money{font-family:'Playfair Display',serif;font-size:16px;}
+
+/* DISPONIBILIDAD */
+.disp-section{margin-top:4px;}
+.disp-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:12px;padding:0 2px;}
+.disp-card{background:var(--white);border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(26,58,92,.08);border:1px solid var(--border);}
+.disp-row{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);}
+.disp-row:last-child{border-bottom:none;}
+.disp-mes{font-weight:600;font-size:13px;color:var(--navy);width:100px;}
+.disp-bar-wrap{flex:1;height:8px;background:var(--border);border-radius:100px;overflow:hidden;margin:0 12px;}
+.disp-bar{height:100%;border-radius:100px;background:var(--ocupado-t);transition:width .5s;}
+.disp-info{font-size:11px;color:var(--muted);text-align:right;min-width:80px;}
+.disp-libre{color:var(--libre-t);font-weight:600;}
+
+/* PIE */
+.footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🏖️ Barbate · Cádiz</div>
+  <h1 class="hero-title">Calendario de Reservas</h1>
+  <p class="hero-sub">Apartamento Calle Lirio, 2 · Temporada 2026</p>
+  <div class="gold-line"></div>
+</div>
+
+<div class="stats" id="statsWrap"></div>
+
+<div class="leyenda">
+  <div class="ley-item"><div class="ley-dot libre"></div> Libre</div>
+  <div class="ley-item"><div class="ley-dot ocupado"></div> Ocupado</div>
+  <div class="ley-item"><div class="ley-dot hoy"></div> Hoy</div>
+</div>
+
+<div class="wrap">
+  <div id="calendarios"></div>
+  <div class="reservas-section">
+    <div class="reservas-title">Reservas confirmadas</div>
+    <div id="reservasList"></div>
+  </div>
+  <div class="disp-section" style="margin-top:20px;">
+    <div class="disp-title">Disponibilidad por mes</div>
+    <div class="disp-card" id="dispList"></div>
+  </div>
+</div>
+
+<div class="footer">Apartamento Calle Lirio, 2 · Barbate (Cádiz) · Carmen María Rodríguez Córdoba · 2026</div>
+
+<script>
+const RESERVAS = [
+  {
+    id: 1,
+    nombre: "Ángeles Sánchez Carnicer y Rafael Martín Borrego",
+    entrada: new Date(2026, 7, 3),   // mes 0-indexed
+    salida:  new Date(2026, 7, 10),
+    importe: 1100,
+    personas: 2,
+  },
+  {
+    id: 2,
+    nombre: "María Ángeles Moreno Rojas y Juan Antonio Gómez López",
+    entrada: new Date(2026, 7, 17),
+    salida:  new Date(2026, 7, 23),
+    importe: 1100,
+    personas: 2,
+  },
+];
+
+const MESES = [
+  {anio:2026, mes:5, nombre:"Junio"},
+  {anio:2026, mes:6, nombre:"Julio"},
+  {anio:2026, mes:7, nombre:"Agosto"},
+  {anio:2026, mes:8, nombre:"Septiembre"},
+];
+
+const DIAS_NOMBRE = ["L","M","X","J","V","S","D"];
+const MESES_NOMBRE = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+const hoy = new Date(); hoy.setHours(0,0,0,0);
+
+function sameDay(a, b) {
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+function getEstado(d) {
+  for (const r of RESERVAS) {
+    const e = new Date(r.entrada); e.setHours(0,0,0,0);
+    const s = new Date(r.salida);  s.setHours(0,0,0,0);
+    if (d >= e && d <= s) {
+      if (sameDay(d, e)) return {estado:'entrada', reserva:r};
+      if (sameDay(d, s)) return {estado:'salida',  reserva:r};
+      return {estado:'ocupado', reserva:r};
+    }
+  }
+  return {estado:'libre', reserva:null};
+}
+function diasEnMes(anio, mes) {
+  return new Date(anio, mes+1, 0).getDate();
+}
+function primerDiaSemana(anio, mes) {
+  // 0=Dom, need Mon=0
+  const d = new Date(anio, mes, 1).getDay();
+  return d === 0 ? 6 : d - 1;
+}
+
+// ── STATS ──────────────────────────────────────────────────────────
+let totalDias = 0, totalOcupados = 0;
+MESES.forEach(({anio, mes}) => {
+  const last = diasEnMes(anio, mes);
+  totalDias += last;
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    if (getEstado(date).estado !== 'libre') totalOcupados++;
+  }
+});
+const totalLibres = totalDias - totalOcupados;
+document.getElementById('statsWrap').innerHTML = `
+  <div class="stat ocupado"><span class="val">${totalOcupados}</span><span class="lbl">Días ocupados</span></div>
+  <div class="stat libre"><span class="val">${totalLibres}</span><span class="lbl">Días libres</span></div>
+  <div class="stat"><span class="val">${RESERVAS.length}</span><span class="lbl">Reservas</span></div>
+`;
+
+// ── CALENDARIOS ──────────────────────────────────────────────────
+const calWrap = document.getElementById('calendarios');
+MESES.forEach(({anio, mes, nombre}) => {
+  const last = diasEnMes(anio, mes);
+  const firstDay = primerDiaSemana(anio, mes);
+  let ocupadosMes = 0;
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    if (getEstado(date).estado !== 'libre') ocupadosMes++;
+  }
+  const libresMes = last - ocupadosMes;
+
+  let headerExtra = '';
+  if (ocupadosMes > 0) headerExtra = `<span class="mes-ocupado">${ocupadosMes} días ocupados</span>`;
+  else headerExtra = `<span class="mes-libre">Todo libre ✓</span>`;
+
+  let html = `<div class="mes-card">
+    <div class="mes-header">
+      <span class="mes-nombre">${nombre} 2026</span>
+      ${headerExtra}
+    </div>
+    <div class="cal-grid">`;
+
+  // Header días
+  DIAS_NOMBRE.forEach((d,i) => {
+    const wk = i >= 5 ? ' weekend' : '';
+    html += `<div class="cal-header${wk}">${d}</div>`;
+  });
+
+  // Empty cells
+  for (let i = 0; i < firstDay; i++) html += `<div class="dia vacio"></div>`;
+
+  // Days
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    const {estado, reserva} = getEstado(date);
+    let cls = estado;
+    if (sameDay(date, hoy)) cls = 'hoy';
+    let tip = '';
+    if (reserva) {
+      const short = reserva.nombre.split(' ').slice(0,2).join(' ');
+      if (estado === 'entrada') tip = `data-tip="Entrada: ${short}"`;
+      else if (estado === 'salida') tip = `data-tip="Salida: ${short}"`;
+      else tip = `data-tip="${short}"`;
+    }
+    html += `<div class="dia ${cls}" ${tip}>${d}${tip ? `<div class="tooltip">${tip.match(/="([^"]+)"/)?.[1]||''}</div>` : ''}</div>`;
+  }
+
+  html += `</div></div>`;
+  calWrap.innerHTML += html;
+});
+
+// ── RESERVAS ──────────────────────────────────────────────────────
+const resWrap = document.getElementById('reservasList');
+RESERVAS.forEach((r, i) => {
+  const noches = Math.round((r.salida - r.entrada) / (1000*60*60*24));
+  const sena = Math.round(r.importe * 0.3);
+  const resto = r.importe - sena;
+  const fmtDate = d => `${d.getDate()} de ${MESES_NOMBRE[d.getMonth()]} de ${d.getFullYear()}`;
+
+  resWrap.innerHTML += `
+    <div class="reserva-card">
+      <div class="res-header">
+        <span class="res-num">Reserva ${i+1}</span>
+        <span class="res-estado">✓ Confirmada</span>
+      </div>
+      <div class="res-body">
+        <div class="res-row"><span class="res-k">Inquilinos</span><span class="res-v">${r.nombre}</span></div>
+        <div class="res-row"><span class="res-k">Entrada</span><span class="res-v">${fmtDate(r.entrada)} · 14:00h</span></div>
+        <div class="res-row"><span class="res-k">Salida</span><span class="res-v">${fmtDate(r.salida)} · 10:00h</span></div>
+        <div class="res-row"><span class="res-k">Noches</span><span class="res-v">${noches} noches</span></div>
+        <div class="res-row"><span class="res-k">Señal pagada (30%)</span><span class="res-v">${sena}€</span></div>
+        <div class="res-row"><span class="res-k">Resto a cobrar en llaves</span><span class="res-v">${resto}€</span></div>
+        <div class="res-row"><span class="res-k">Total</span><span class="res-v money">${r.importe}€</span></div>
+      </div>
+    </div>`;
+});
+
+// ── DISPONIBILIDAD ─────────────────────────────────────────────────
+const dispWrap = document.getElementById('dispList');
+MESES.forEach(({anio, mes, nombre}) => {
+  const last = diasEnMes(anio, mes);
+  let ocu = 0;
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    if (getEstado(date).estado !== 'libre') ocu++;
+  }
+  const lib = last - ocu;
+  const pct = Math.round(ocu/last*100);
+  dispWrap.innerHTML += `
+    <div class="disp-row">
+      <span class="disp-mes">${nombre}</span>
+      <div class="disp-bar-wrap"><div class="disp-bar" style="width:${pct}%"></div></div>
+      <span class="disp-info">${ocu > 0 ? `<span style="color:var(--ocupado-t)">${ocu} ocupados</span>` : ''} <span class="disp-libre">${lib} libres</span></span>
+    </div>`;
+});
+</script>
+</body>
+</html>
