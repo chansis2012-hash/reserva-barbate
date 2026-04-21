@@ -392,7 +392,7 @@ function validarPaso2(){
   const nueva_e=new Date(e), nueva_s=new Date(s);
   for(const r of RESERVAS_EXISTENTES){
     const r_e=new Date(r.entrada), r_s=new Date(r.salida);
-    if(nueva_e<=r_s && nueva_s>=r_e){
+    if(nueva_e<r_s && nueva_s>r_e){
       alert('⚠️ ATENCIÓN: Estas fechas no están disponibles.\n\n'+
         'El apartamento ya está reservado en esas fechas.\n'+
         'Por favor, elige otras fechas o contacta con Carmen para más información.');
