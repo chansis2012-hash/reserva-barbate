@@ -1,162 +1,324 @@
-%PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
-1 0 obj
-<<
-/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 7 0 R
->>
-endobj
-2 0 obj
-<<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
->>
-endobj
-3 0 obj
-<<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
->>
-endobj
-4 0 obj
-<<
-/BaseFont /ZapfDingbats /Name /F3 /Subtype /Type1 /Type /Font
->>
-endobj
-5 0 obj
-<<
-/Contents 14 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#1a3a5c"/>
+<title>Calendario · Barbate 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#1a3a5c;--navy2:#2c5f8a;--sand:#f5f0e8;--gold:#c8a84b;--white:#fff;--muted:#7a8a9a;--border:#dde4ed;--libre:#e8f5e9;--libre-t:#2e7d5e;--ocupado:#ffebee;--ocupado-t:#c62828;--entrada:#fff3e0;--entrada-t:#e65100;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--navy);-webkit-font-smoothing:antialiased;}
 
->> 
-  /Type /Page
->>
-endobj
-6 0 obj
-<<
-/Contents 15 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
+/* HEADER */
+.hero{background:var(--navy);padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 0%,rgba(200,168,75,.18),transparent 60%);}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(200,168,75,.15);border:1px solid rgba(200,168,75,.3);border-radius:100px;padding:4px 12px;font-size:10px;font-weight:600;letter-spacing:2px;color:#e8c96a;text-transform:uppercase;margin-bottom:10px;position:relative;}
+.hero-title{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:4px;position:relative;}
+.hero-sub{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1.5px;text-transform:uppercase;position:relative;}
+.gold-line{width:40px;height:2px;background:var(--gold);margin:12px auto 0;border-radius:2px;position:relative;}
 
->> 
-  /Type /Page
->>
-endobj
-7 0 obj
-<<
-/BaseFont /Symbol /Name /F4 /Subtype /Type1 /Type /Font
->>
-endobj
-8 0 obj
-<<
-/Contents 16 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
+/* STATS */
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:16px;max-width:600px;margin:0 auto;}
+.stat{background:var(--white);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 2px 12px rgba(26,58,92,.08);border:1px solid var(--border);}
+.stat .val{font-family:'Playfair Display',serif;font-size:26px;color:var(--navy);display:block;line-height:1;}
+.stat .lbl{font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
+.stat.ocupado .val{color:var(--ocupado-t);}
+.stat.libre .val{color:var(--libre-t);}
 
->> 
-  /Type /Page
->>
-endobj
-9 0 obj
-<<
-/Contents 17 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
+/* LEYENDA */
+.leyenda{display:flex;justify-content:center;gap:16px;padding:0 16px 12px;flex-wrap:wrap;}
+.ley-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--navy);}
+.ley-dot{width:14px;height:14px;border-radius:4px;}
+.ley-dot.libre{background:var(--libre-t);}
+.ley-dot.ocupado{background:var(--ocupado-t);}
+.ley-dot.hoy{background:var(--gold);}
 
->> 
-  /Type /Page
->>
-endobj
-10 0 obj
-<<
-/Contents 18 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
+/* WRAP */
+.wrap{max-width:600px;margin:0 auto;padding:0 14px 30px;}
 
->> 
-  /Type /Page
->>
-endobj
-11 0 obj
-<<
-/PageMode /UseNone /Pages 13 0 R /Type /Catalog
->>
-endobj
-12 0 obj
-<<
-/Author (\(anonymous\)) /CreationDate (D:20260603201112+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260603201112+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
->>
-endobj
-13 0 obj
-<<
-/Count 5 /Kids [ 5 0 R 6 0 R 8 0 R 9 0 R 10 0 R ] /Type /Pages
->>
-endobj
-14 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2936
->>
-stream
-Gb"/j969/N&BF88'KQGU'ma(JAiIUo.SCm%-k:SA8>*8R#7O7B_5F3mZ"-LN>IH:L!gD,GG"1;ne:1&UIadG4_(Ta+rbtZSb;K+f1JYG&lQ6F7<0?i6=fma63T@0;k#?(A-)lj"2>e9gTU9c>CVpGnU/Dn9V.#WhAGagfeB,U>1c8fl%i5h2)g;n1h'_ARCW]YR%+qYbamlEqo@92*-^S1FOOFrT>[=Ha^HK+ODhY13HM-F$Mp%=5'-`et+-H4XZMp6(LhhN1Igs/f%@=b_$h=<lcHm&+^-6jVC:GXk(/u5O_j``.KiYBlWXSK=;$MJ!P.mf5&[\_5/i&r!Wgid)Wn`Bm&1U8RB"AGsaj6IDqp#)a_tuspC3+TC6dBVZ[u[-mYm\q%c1_%Zq]#,"psnO'p5c[)Kc%cD%:Z-?mf^,LFIf@i2$+\'=%61$S(_$h[HiL(NF:6Kc."@*0:KB))tN%08$&\6f@OV>Z)1l;0WGQ/]1XG9Yq@<W<<sX?BNt_*>:++d_5s2@:917?gRl8NmVKPbnO(e$i9NW%9d@[i]^N<g5"($jE%,1"nS227X#<j\6doRj/SsCb&&8(U\UHs$.(#hfJg--,=LTM]EnAt"[>(g\/_dke_u&i`HLpCOk3hqhK/QV2=AOSc$Nk+.jGHd/@EcQgW"nK=]W$,.VLJO>qagV0i8;-kC>12+]YY!UoC51,eF1#chRn&jJR9Wg$&^uZIES5,=B/_'.gtYiAMe12=TTmbU(u1srN)PQq3W\TXl?K2>UpZ46mrB%]@J[dNI/EZY$78km1A2nILXjpkpgOg'(rDjk*'k\$l-F<IN:QJk"E3K6oT\L@Q9d8Th9s9TaCKtOq(;5_?+#N$T+V`1^t*Ps!.]+Fq%Y??9aT7\#b[78BRXPYmeNm;!,>%f/`%%,PbP^,FW"g`E4W,bl6>5:k?$fZ)0CFPmD.dB:smO<bO;D/(e@WkZe=);o?X\e4!Gn0b:`c;s5cJ.U`aN3EIm\KG?r$![`#kAQc>WYtpI[^c*Z@i#;eKnb)aCpj.2mI"OH`^5SF,Lf<4N`$t0bifs4aECtVl3!I#^S-!&"3M.EhJSu*t^c.'Jip4Q4nb(lUp]b^FI,.Ps>b#fkr\hZ2.VuIJl.tL\`!])+Ai4M8UW;Q2h."]*63!>,1OH_mj*%ZeQ#LO,lMGJSNcQ$\E*!HkB8@RE^_iS]KAF"mS[HsJOpAV"EB><h$ng<-j0WGX]eeqsfjf#TUUYGd[(C)KpuOB.N%50DCF5dV:B?/@'d;jC0cmJMpXCWF;Hp9?2,Z;JF':AZ8Q<<S(\_MG;[B7o&g9XXG0r5+AnP^3!H64tAD"b2Qb-\\RW4&kgPRHa4#h/6kfgH-_SEDKFomRn79L);f%WbI-lf,!%Gfs0'EY/<EbecmLM3A2>1G=1JfQ%)Ll8a[eF7JJG).+]0&@)c,K-Fd'8R\Q0&@)e_oG3QG).1_0&@)c,K.RU@=%^YGWT_ZppbQ17#qlqDhmNgio9>Z4a^L<1IR67Q?IQ<X3j-8L[[PZNT+f_A!c<,g=i:_g<^1m'stX9<5V97.i3.uQ]>VKbNEjUfl@UILqN2:Om['.DhN_,H?=m)';Qgr#jN52Y/j'Y[OX%/Ja!M@<1pgS\0Ku'@FsFp]7XoJ%pM"phORY6H.]")o'SKkQ2@[c;]\](?+Jj12<EdnfnIajWLDt)F/*+L17F90>+!d"q!O>k_Y.gYD**pqBaMiF\`M-D4B:1h%Qp;CJ>]!X*:SV*i[*LhG,uEHb(HUL>i0FJ-'(,or+j@O,I>.M,oseH!UMp!YiEIT&hk2=Ga7]0)X/C,)46&$AM=VRPlWk3f/1(T]V_A3ig%>;c:^5;%!S]U&g'B`rt<i*';rW)Lf<=!`At^[Z8]:XDVFTY_3&`Hcm,G-G?0qd5bqPQ#9u[iGr[$4(qrP^%rtiKaU`Do:<=#m<fY94E`>fU%rtPX!L`(@+X#5RBu#-NNg+Q+7#(g;M1FRGIX6<PVORohDSV)?km!X`dk9`M)!=FM&]U@S:5!VbPS6L@Be1iH&g$^7I0*^q^a<S'$t'`,)cPCB9udr+@IPb#9o,_MfS#*M^a;Iu"?']P.R[hd?%nr1TW>>bZt::\\ISi.5bO\bJP&L5aISKK3S<lRj\Ag&6<Lf5@54*q)KM`N?=-s>;hc$T9JA$2?\ZOuQ6!jU$A2HC>rfi$b99nC+3J:/G(Mu0"%&&h`*o'<NmHgS_a:g@PKQgYASsL<LN8/=A15@PEcGIIQ/QSjW%[b2Ao,#Fj'JK(5L?f`FDW:J1[*QVqD(foEZnfNPp'nQO>$3oVJ*N%j'GY-h]k-3+A$#h8J3gNP*eh(`(Z=>As+DoP9c!5OJJ149qWc],(,Z:>(eR#E=;ehIV^a"=9Ws1Tc/e\>'f8sp4Z,%bV%sQSS!%RTHrK7-mslI)i@3rre==6R(o>V,j'#6N+<?Ec.b(1F+8q$%<Ajs3$a\l2.1Sf*9-@+35jR>OuSJQYD$u?0X1Ybb7Tt4/lp-]cs3Y/[nA9.cQM1>/rn6Xk95-^n/S1s!7,);28sWMAn-GU0I34K\L$i)ATi)i9J^+)=cV']Q]\iW4QB,@R#>rAQfG%Ra6Q_^_$^4%LehRnT?89?PsKdIKD8CMnYmlY^1r2nWWe3^as4VMT4B:@8WoKP0KE-(1:p_<[JjY.k2k\SVKB)rS4p9,,E;p<.ir`b%QSD+R@L_'_hs5)'b<<Ds7mYE6S@(WOGc#8H^,3u%-Jm(%&Gs=&OTu%9Z0bn',*)7jhsOq`Gffd)KN&X1X[s0P@UKNYY6\"/B(gR/<dnb"2'=:OcldcB$$j/%<,;WZfG$)dM0#-B$"Gd!L^gs8F[@f`rJ=IH499VVFQN9d&2.&r.I8ZS)>[dH/9f.%+?HC%R];JZbpeooT%k3d<r*0^l]-&@#'-6IH?*DUH\bi7%D0~>endstream
-endobj
-15 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2857
->>
-stream
-Gb!<S>Ar7S'Z],&.JPZ+*>"P2bMLZ**E%-q`88C^^3FMGAVf.pg#_PgO:j!?[ObVq%6HlAR"lCU532P0=JeY%JR@^Bs0P,V`<&2P9bCrMnN3HH$ac:plc$hM(UU=o.HXNINjLRo_Oo0bba9#X'h+KE/L3H!7C3Zjn]M)@PK%Jc<bSai:)K_JFi((-R3<fK#o<s6/3]itkLVq*]tKl0=#]aFn(up6QsJ%cY@qouHh/.J).DeJ>5X3m5G634-&DL"^KUm56nh".6'XC"_Jaq8=SjVMOK]-dV(=`S5kE:E$]B]__&l"[O%/NW[QbV;>#l]<aC+92:9ebl1\cl9AMgHYErGY)ErG6OM,sB:qpk7-\AH_NC:RZFO5F`[rqbl?];L_9cpn9\?*F9W>^g"r+T=pQ+'%!Aq/Ge[Lb"A^b<+t^+&`O4jooo=\FZ3:"D]9>W'#:G'W)L+hP&hV\A4D4"4tAtC4\&!R`X2]5U/:n/N#4p#;tTsb%tIp**bi92WY_/U"rV,9h/,!&^.,+@[QfU-T#:%@l:JXVC3M>PXCg][I"`&/7sYqU5!/uE*#kjmD4cA9_3fVU!Q=>CT:g/&+!:Ob_H\BX1GtnnZ\tMjqeTg6,kgK%tt!!0"a>8THa<BRE43,lUAZkfC:.C=;F$e!kL9lV;]jglVW'9Cb;`*1bcDuBV]3WhG?J*`l)k:N!'u'$R?)m.Vq'0?"Vnl?spCJ0RR@E:^A2EN3!c,J%YZ#s7Np0@@D<`X0\LP8WF\?As<f";QPF,44R1]H;R4>BgW/Z/+u$EbmL0nN=MB6Xd9R&l>lIOa(NNL81SN_&ME!u[\JLp$5nJZ4@oiCIuOeUl\5Is4smPs>)#Hci`cE5Gl9#oV-<9/;V5TI;F`%-rGe7uSjHreN!NGrWD*9]+bTZ)SRaLTECXh?/]/PR,6hh4Z%.d`8Rk-':dV=7\S[RBef>nAapq,3GHaJf4)><Gh3+"*G6IA:B5JU,gf]RWiiFJq>KRA*<"]gmlQ#*cAJEmephq$>7^,a[ePk]-CVD+[\6$7),13IgVf,qopV/jJ][!^kKalg@/57!?Y[06K]cTBc!uo8'J@EL`2$jBg6)l0=G/L#l?q^Y-Vi8aHU;LY_'r+-#g%j&^F"@Z0%_SDD=msBAbD:qQFYG]^%g>F4,!:B2H=Ct5l`>,KBIQ#M3XC^JU"hs+din&Upe_pn0Y%ZTN"-"\UJ1tC#15^bGIt0i*m?l3N:kaCGS%d^cr,&$G[M676HOlHa$\GTn\[-A@C-N3q-$E0hVorFn^,L[bd`98"U8H\3k1#G#S'o)6#[\,X?GKLp`MQ'PasBGQke6harOG7*:hsI*gD3b'?D:u:_mV=T'OJ!h/Fbs(i;6g6fr`KK2\YE9-"-n;F`d`S"4q\cHP*h)""JT4Re![LIF>4Q(9QLPej4nm\'IIOS+)#\;Yg&=pH:ipeY?T-K9Yu(HsQ9N:g434QOYl<^MG6W!"aBpimo&-oP8mSTrMnn8NaKFSGQKqJgk2a_c,2bjA^d63kt8LTL717qJL6j>uoe3YWEjM<Fr^prVK'XLlX6Tr%+'ZNmM7/<i<MIQh;U+$VA&+/[DY"MCTcXjGT_?W%buE<dNl%)t\[!+i5K*LIj8LU#^iLCSJ=*EpV2Q4DCWbR7tmPk<rYn,DNZ)<`b\L;D(fbJX9U8hqEt[2TW&7\bqJWJBEJ.3lg;L\<*tHh(UP]Ct.b+-\pqPb%32$`\k!s"\i_h_(=@J,Hg8I$e/o*l`s:__D`FginZO%1cs^<=TPMZLc$;2jfiP*r:(Sk1q+D/0c45f"o9Y4;8WmM=A;<egHeJN-/2^530l3QOhI"Q:`7qpIs`*+$VA&+/[TiIgk=(J`2uP&(H"8qS_kWem%8*O=NCs4;`otWU-=.cXbW(nUiU4@C2!E*>"4mGM`nE0j.m4VBH$I'?.CQ%bhRQelR37Lm!BK7(%]=m7g/dYpu"roP^&>H9Z^@"tY^6d=,jU1)]td$jDApR[oTaN1\ZRlERKA[Y_RAltip,NY\J>L&PqP=msBAaLHqM@Mt+7i^/4$R-<:+50QgggK,VJ<US%3\ZiCD",oUHFJ426AD6kLj"XqMC)(=l'rE(/BqV+p$OA!5</_'mY-Z$^)u00j"W49Bk?<qU5@$Oopg8&$gT!9WW@DkBgP%HPU5<F",cdA5lF^5IRTjO18n%sRA6WgC"i4FcbEgfHP$#Pm]p@B#5r;[+X/5Ni,ZaDiW24ZE&BsfeBo0MUM&#rVBW9f(7!!M==_b-4@Kh8"=_d[7_-A'oQItMd=M^V6QJ-aQ1fl&hV=po7<q+.kV062WbgfR#M7G)AAq-=Q@eJ%df/RYYY&OW1=ikCZEH<N*SPC3JBZ5-r+[4"_BN9'(f*G1#)U*VZP5AI&X6)uWK>S$o+(DWmSn'^[WUSh]KI9KR%kX;.k9Y^5_KgtUDe*.)_F.-od-Nd%c!ge$W,nZ*)I:nt3tJ9J[<K+:fsQ/Eb])6^NR5+?A@,lJd-;P)9cCN<cSa.9]B9kgTHIeNZ<G/%eYHgVJ5^&caUEuY%6$b3<Ao<uHC8!GIDeKf%==`AWE<EGF:J05[CGlr^slaKSG*m26(QiE\@nIm.mR-N1EGGUEc1$74n"PXqFD6LVMIEnpQ7(L6arLu4[kXJNtg[Y:VD,NbPS>A=,jESH<X8m;bc[OkEEm?86C(OERn$Ujs.FI>LUN3bFa5&4nem2iqi&cS#][L]:-j,<SL4,N2Rp\GM%A$AZ*Eg5uY43(mR5X=DmRC26k4"(AJ`+NQ2h'(0@i^@p-3l&i*T;A2OP>FgNXO.j`C(DU6G1.ZqHqb*jsqothT>mha:#$;dpaJa%VhC]V7Q(t$>&)8+#'~>endstream
-endobj
-16 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2156
->>
-stream
-Gb"/(>Ar4f&:Vs/R$T&Fl?'Wsn(Qra,Ygcr+:$[o8'6aZ3%5RsX[?8L^])IR`YrYIe5`>%V2<+Xm*<ha1HY1/",\atrk?)O3"Fm6)$@l%\-449KO>(7E:igZjcU)u_N@08<\Eq3:L&\(KMgk\#)%%L*IJ2_[4<E242O-`WQ$(gJpUJ6JLR@I1G^chm1N.$<%&F85]8>;)c&)6n5%'!n\sEs$s-\J#lKV(nYCZg#>VgU"i4gW?Gi8t@^Pl:I+?q%/=SYI8!3C4gF)HMicKs&O<,d0;BEQ?_mFE1kn0n.!JseN:W*$M*>2+0m:;kDE/BcFc\OE16UXKWf:bs"9E.YP/Aq?5?7t.]SBiDscB?l?Dr;Kua'nNn>Xi\_3sfh;:KO_lN2dh6?mM;u$)J@KX)mqh/;TX&U`JkpAt1R--q5%t0O>H%P%f0)%jVbB^;e.AF/`;ICr1i`ZY"3fB)<XJd`YT&(\\KOC@6&X?/b.W5e2asp7>;_S%W'nMqeAb@3]ce*IH-IU$U:WjIk`DnVu$p^j3M/YDggs54EZ$1tJ2.+IZ51kGR`=9)\LJeQGqM2pP;=lh69'`QK+JGmr-N)77CP?Sl8ngjD'NVrK46DOq:a(]DhQZo"m7]3uTk4N"Z9PtQhOdCM0W$rlJj*<HsSHlo:ZHb)Y);rW&).#e#+&,lidpM`59:'\\q\2:B=\7$G&gapZ"E##o3R#1)`3;3L^UOOAY8kZ`!$>U'6/#+`qdHSFg"hqfg3:).a=-6Jth(V[81<\fpADqq]4bP;73g(Y"m/Y%#<n(,<fJ?#Oa%!-kheZ-0LbV5uA%Wcdrodn>+0KA=$F,JeA`,TJHp/`lDTCHElQ.PSDI;o-i)#hA^jO(b_4iuVF0m\rX0S$jdrsg^Cdch^6mbf<r'k51$=k@B]l$6h0DV>if+r>%GZjq/"f*9hh7)W'Kt$Dp=Pd5ll"TidrLc@pqJb^%?E4"c6f5IVqdoCYf5$65m]N"=As:HDE0^Z/$3(s)=k0NUU/KT;]+Sna8-b#ED-hptC6[JL75EllQ<KYKkb3kr>h%1@NNmOAAl<(7dRm"ndidAU$,Hq&SsbjX5a4=\,*J3'l")rQ,8cMf'EW%Y4\cmB-;,hGLam9SJR+iqS%ejT?&iKPHD7oi"e7g&+gpCuRG8MF?#`Brdl"c1b^FAPW3Cu5Nm3RaJ)NEU<B_t+G`<Gjq!6sV5)U3f/MJbugF(hn^#%Zj$)9Lc4N<:,3/`qZN,PF<p]6TJFp@EPjE_TY1lSV&78JoO(^-X0PH[[oJnQ4]0&f;-$uG;9iF)(5XNfZa$JpBo*6`!Xd,puZ:1IVZDLM6=AJ3jQ/R5`++65/Rb"ZDUrJ,ZeGg?X=PQ+JUBrg!QVAE[-IS[lWXHhPKmXtGW"L%QhmdaRtdVYG6(78,S;LG>9+HJCugD-E#fGAhhT'5,3b9C(YYZr`sq/.9)#.3c\)J]t?M9T&c4Q`58ME2+(-k>EZ^%c8=(p81:rjDSbV:kOA-1.)eN[#@>qaDM>FV<Gdi(<(J2Y^7LaA&CajT;.ns"BT"/i9OfT82=XA;=nmEd+A%:<_^7QsE2Obm_jXC+S49T0uGHMLO;(4N1,I!`]u<B2In5(2^W/;@Jg7W]I8`WP&2<Vt6T[,jW$YM/8t!a?+01+<N$8dXKo=:>ZkO=j(X+Acp"ohA4iG#g56jj`-M_aPr2=;'Yt%L6^joWg7C.FWnEB8)>mul\0*@6+-LVTj#qjJsoJ,dZ4L(s*48o9FK6%4&hW6Xl=U\XaYYQI-.+F;fE?rna&;/19Qn*YV95*@Q7[>=9=spcZ<JuMW8ga)TBC&9<_<CKb==ZYl(gE(8Hk\^Mp8e`3Ir:cEY:qa4`ULoF&]ciE5tr/CVZ1RW$hNNeNggAlOXg*34h0m(oro`Y<70(d(*s"1aJik532">.-2R*GRXr1q6H]1oCq&=u&`J=.I8U62?L'rFo0)lU[#3U[F`J4:IP5`G/Gr%r-L;(Cq*5QhV.!bh7B++N+#*`FWhGVpYSF4ljR_IMd;!1u:uP]o&rAV>Fl.206$%GMU%&A1kWkj(h4kCt4=:XUjSHh6q'88W3F&N2:qQeY4e?HD]t@IEtm%ZDIpYb&F3-abIrEa&HEXdkU=74t!D7G,LO`r5r?dp+>TQi95YXVj&;~>endstream
-endobj
-17 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2080
->>
-stream
-Gb"/)968QQ&AJ$CoOY(RWXSLMbh`bDW).b#Al#sn6j]`,.EFDObHKfpdDM+labjSC.53+$RdO%fe32]%_LUX(q1!>F!,j4RqAf[X@<)TH&daa8(ek3A#;"JkM?kM^J:LcHnK[Hh0sTGG*WWHrQ3"mIA%5?sh@F)N(GN]k;+[#'(65mM$tU%+]tt`#=0<o.Z)XfPL^XX8/N.Y*QHdqVO/bX)e;)*e"c*6!SJPF6/Ds-(+<l;:P-I:82e$@pE!Mi#bjjO0$rR#dbhGVi0953+8\0jgR4Q8/9:1*XaX_#t&moG'S2(_ePh$hIb\@QPo0=dQ(RbOt5&rouN99hN(7JSrj,?hrqD`@MM\1$r?/9/7=&Bs_i$S8aL:8=2^C^$ul^-?nYBs`WYT/J+/dX.Rrr@.c_AYNK_M&NWp?Qps8L'QZm=r)Q#[Q]DHd1>*=tC>C@f3i3U\bU?,FH`mDp`$@q?g#7rmV59HDQ#[Hflpc[cK(.b1T2thbMStW57L)q"&&^N5e*7bT$$2pB)Vt+5bH[k/H\S_%eSf^$R*,77DdY-+$qN3c05LWDepk$\^R4,8GL<Osr)SkMDUZ01l>5)l6H6*2'AQTU/@d<a%j!UN5ZCn4mH-CT^iqm$?&@N9Qe%[1U[UXok+a7MP<*Kc*4$2.U]*cY,?LVCb7uO/eY.r>eQ?,:f[%Bqt,W0HOMZ`d\LbDBC)\6UV_B.[UJE-DL;Al5hD0Koa+__n3lD.=gCB^6gRZ@>8$.V7T2*(]Fo7Ea?V)<3st/W#=0+YNL60FZ#^aj.s_//o=Z?hKpB;L?UOJ@=00AU'7&6BbVpK:;2Ahp_Q,q_AHk-,b?@P5++pui?W])^3?,N9Er3MpR.$J3d6q/8WRC]Xm_Jc/PqR^AD"ejEFM_mrJ!>LF1DYjXJ;lLhC2!3'0Q3_3F=A(mZW"OiL4741AN;oT0!.Qe;qGZK">nZm1jlrp.g`[HacF=[m_>@AA;u1QJ?lUK>,okGC-,/mP]1F-3nF/i$LYl2_"6>Pni@Q>Gt*4C?isd`+JUq"\c+u'MG9[Y)@EkPf)si3+".81=TU[aArY%**H>Wns067B2s$&9!tln9.&1[[<Q)`U"+^/*N7OqWL!AeW"t`GV-8\^Ij_6R>bt"1_C:&Bn/Lr!M^V"\Ke+`W6uX'aX(V]U<p>$a4=j0me+a_,=uZPj116K#fAN5qXW.ZYITb6U*V5c+0'r34lT28Q"7&"PXomuNYcd/o/frB&<&H1>7J*$k.4hcO(ci^kU6<sqC4Y+ZO@]7:%p$.o2bht_N9.e[@7jf)nT8jWmuG_KB5`i$j)^TX:PL7!D-/PeAVn6"75'CP;e(IMQjQu2T.+Z]i.P0TqTGJ#&]8Fi\Nq&idB28.C(2rcK"2H9S=dc,j$lD*%?-]ZM=1XmMUJ)nR)>4a:SMrULmf=jh:j3hM&qs'J/`FP/8*;6U9Nr4<YmONQ:$=gEn/-i4:iG"Cu+`.L'JD3&uf1)_.^(^Dj.R22/+#r\)p3=L1jF,LBSfX\=9Ae0^V^HF@\V.4ERBS@<Aq/&C\9!UQ4X!NWO'.Bci]HS(D,mjgEbZe?"R6^L:'GXiBV:k?<5.Z[df4/M%n,f`lSV@\Z;j0A>YrA.b3"MHnKQ1XR#!4=NsJFZ\R6E)pAeF<d>Hom8WL=bD.;k<^92pM%!*>Z\t[R;_W%-UW;3N?3qid@lPO.nOq7\@.'V?h;>Y\no#D:6I&AmX:gI!UHjA**1?nGM4XCe9r4raZ/::3bLUUDeLUE@Ni/JDS8T,;1(1=H+\sq@I-JT$JT_".IC&%oSEO?a_WP-]@>1.`i%/Ejr-hpOu=_(LmTG`dX&j_1`Al#q3\X^jD1]_+WnJY8om06+[R3@A,m>kUXP.mnaNa@p:>?T#Dk;g/7uXCXGKGO#W)_Fla'HFH3rm-Nl.!Bi2L(<2]'9>d=<Oe4h@(k!?epU4bPOb)@%O"pp4+fqQ?AkC(B.%KJ$Kn`DLE^bnP<\Fr>>(0hf'\k*I-mfD)1L.24lmYDE."+jA;W7@GeB@a?\W;Lb5D\]c-DkBhJOo3J<-l;"1gW2R*'Q_%CPWQP;NrWC3eqdo~>endstream
-endobj
-18 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 330
->>
-stream
-GarVIb>,r/&A7ljk1Ck3Z/\?%U_-S+_L^]V/hSkY:`a#@6L*1/9`YQ"YO&OGZ_O'+a=+uS^@]4`j7Yc(8GH6l`>*cSHd=mCph"9WF05!Q[W#L#Q0RN#:YHc-74+N:i)3aT$$2<`6=IK<_lV3P3Q\Z`NZK44fb;=NH)l3kr5`qjBNb8RZtImopiRajdd[3O_O`m"3DmUP?7=nDEI<DXh0V[kki4@V-puTT<,HBjCIls<FB9XQ_A#j#b0[N9H?i8P+]/[i6YZ_3A!>XF+WaL@W>Tp=bZVt0VU19X*HEtKS&5e5-o5S'n8Iet\G=ki:&$OLYV-1C?C(~>endstream
-endobj
-xref
-0 19
-0000000000 65535 f 
-0000000061 00000 n 
-0000000122 00000 n 
-0000000229 00000 n 
-0000000341 00000 n 
-0000000424 00000 n 
-0000000629 00000 n 
-0000000834 00000 n 
-0000000911 00000 n 
-0000001116 00000 n 
-0000001321 00000 n 
-0000001527 00000 n 
-0000001597 00000 n 
-0000001878 00000 n 
-0000001963 00000 n 
-0000004991 00000 n 
-0000007940 00000 n 
-0000010188 00000 n 
-0000012360 00000 n 
-trailer
-<<
-/ID 
-[<ccdb5615ce91bd2d4f4fc00cd73838d0><ccdb5615ce91bd2d4f4fc00cd73838d0>]
-% ReportLab generated PDF document -- digest (opensource)
+/* MES */
+.mes-card{background:var(--white);border-radius:16px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 16px rgba(26,58,92,.08);border:1px solid var(--border);}
+.mes-header{background:var(--navy);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
+.mes-nombre{font-family:'Playfair Display',serif;font-size:16px;color:#fff;}
+.mes-badge{font-size:10px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.5);text-transform:uppercase;}
+.mes-libre{font-size:11px;color:#81c784;font-weight:500;}
+.mes-ocupado{font-size:11px;color:#ef9a9a;font-weight:500;}
 
-/Info 12 0 R
-/Root 11 0 R
-/Size 19
->>
-startxref
-12781
-%%EOF
+/* GRID CALENDARIO */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:10px;}
+.cal-header{text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:6px 2px;letter-spacing:.5px;}
+.cal-header.weekend{color:var(--navy2);}
+.dia{border-radius:8px;padding:8px 4px;text-align:center;font-size:13px;font-weight:500;min-height:36px;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .15s;}
+.dia.vacio{background:transparent;}
+.dia.libre{background:var(--libre);color:var(--libre-t);}
+.dia.ocupado{background:var(--ocupado);color:var(--ocupado-t);font-weight:700;}
+.dia.entrada{background:var(--entrada);color:var(--entrada-t);font-weight:700;border:2px solid var(--entrada-t);}
+.dia.salida{background:var(--entrada);color:var(--entrada-t);font-weight:700;border:2px dashed var(--entrada-t);}
+.dia.hoy{background:var(--gold);color:var(--navy);font-weight:700;}
+.dia:not(.vacio):hover{transform:scale(1.08);}
+
+/* TOOLTIP */
+.dia[data-tip]{position:relative;cursor:pointer;}
+.tooltip{display:none;position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:10px;padding:6px 10px;border-radius:8px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--navy);}
+.dia[data-tip]:hover .tooltip{display:block;}
+
+/* RESERVAS LIST */
+.reservas-section{margin-top:4px;}
+.reservas-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:12px;padding:0 2px;}
+.reserva-card{background:var(--white);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 14px rgba(26,58,92,.08);border:1px solid var(--border);}
+.res-header{background:var(--navy);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.res-num{font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.6);text-transform:uppercase;}
+.res-estado{font-size:10px;font-weight:600;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:100px;color:#fff;}
+.res-body{padding:14px 16px;}
+.res-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.res-row:last-child{border-bottom:none;padding-bottom:0;}
+.res-k{color:var(--muted);font-size:11px;font-weight:500;}
+.res-v{font-weight:600;color:var(--navy);text-align:right;}
+.res-v.money{font-family:'Playfair Display',serif;font-size:16px;}
+
+/* DISPONIBILIDAD */
+.disp-section{margin-top:4px;}
+.disp-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:12px;padding:0 2px;}
+.disp-card{background:var(--white);border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(26,58,92,.08);border:1px solid var(--border);}
+.disp-row{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);}
+.disp-row:last-child{border-bottom:none;}
+.disp-mes{font-weight:600;font-size:13px;color:var(--navy);width:100px;}
+.disp-bar-wrap{flex:1;height:8px;background:var(--border);border-radius:100px;overflow:hidden;margin:0 12px;}
+.disp-bar{height:100%;border-radius:100px;background:var(--ocupado-t);transition:width .5s;}
+.disp-info{font-size:11px;color:var(--muted);text-align:right;min-width:80px;}
+.disp-libre{color:var(--libre-t);font-weight:600;}
+
+/* PIE */
+.footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🏖️ Barbate · Cádiz</div>
+  <h1 class="hero-title">Calendario de Reservas</h1>
+  <p class="hero-sub">Apartamento Calle Lirio, 2 · Temporada 2026</p>
+  <div class="gold-line"></div>
+</div>
+
+<div class="stats" id="statsWrap"></div>
+
+<div class="leyenda">
+  <div class="ley-item"><div class="ley-dot libre"></div> Libre</div>
+  <div class="ley-item"><div class="ley-dot ocupado"></div> Ocupado</div>
+  <div class="ley-item"><div class="ley-dot hoy"></div> Hoy</div>
+</div>
+
+<div class="wrap">
+  <div id="calendarios"></div>
+  <div class="reservas-section">
+    <div class="reservas-title">Reservas confirmadas</div>
+    <div id="reservasList"></div>
+  </div>
+  <div class="disp-section" style="margin-top:20px;">
+    <div class="disp-title">Disponibilidad por mes</div>
+    <div class="disp-card" id="dispList"></div>
+  </div>
+</div>
+
+<div class="footer">Apartamento Calle Lirio, 2 · Barbate (Cádiz) · Carmen María Rodríguez Córdoba · 2026</div>
+
+<script>
+const RESERVAS = [
+  {
+    id: 1,
+    nombre: "Israel Muñoz Fernández y Rafi Garcia Sanchez",
+    entrada: new Date(2026, 6, 13),
+    salida:  new Date(2026, 6, 20),
+    importe: 1000,
+    personas: 2,
+  },
+  {
+    id: 2,
+    nombre: "Ángeles Sánchez Carnicer y Rafael Martín Borrego",
+    entrada: new Date(2026, 7, 3),
+    salida:  new Date(2026, 7, 10),
+    importe: 1100,
+    personas: 2,
+  },
+  {
+    id: 3,
+    nombre: "José Manuel Flores Vega",
+    entrada: new Date(2026, 7, 10),
+    salida:  new Date(2026, 7, 17),
+    importe: 1100,
+    personas: 2,
+  },
+  {
+    id: 4,
+    nombre: "María Ángeles Moreno Rojas y Juan Antonio Gómez López",
+    entrada: new Date(2026, 7, 17),
+    salida:  new Date(2026, 7, 23),
+    importe: 1100,
+    personas: 2,
+  },
+  {
+    id: 5,
+    nombre: "Aurora M. Navas Pérez y José Manuel Burgos Martínez",
+    entrada: new Date(2026, 7, 24),
+    salida:  new Date(2026, 7, 30),
+    importe: 1100,
+    personas: 2,
+  },
+];
+
+const MESES = [
+  {anio:2026, mes:5, nombre:"Junio"},
+  {anio:2026, mes:6, nombre:"Julio"},
+  {anio:2026, mes:7, nombre:"Agosto"},
+  {anio:2026, mes:8, nombre:"Septiembre"},
+];
+
+const DIAS_NOMBRE = ["L","M","X","J","V","S","D"];
+const MESES_NOMBRE = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+const hoy = new Date(); hoy.setHours(0,0,0,0);
+
+function sameDay(a, b) {
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+function getEstado(d) {
+  for (const r of RESERVAS) {
+    const e = new Date(r.entrada); e.setHours(0,0,0,0);
+    const s = new Date(r.salida);  s.setHours(0,0,0,0);
+    if (d >= e && d <= s) {
+      if (sameDay(d, e)) return {estado:'entrada', reserva:r};
+      if (sameDay(d, s)) return {estado:'salida',  reserva:r};
+      return {estado:'ocupado', reserva:r};
+    }
+  }
+  return {estado:'libre', reserva:null};
+}
+function diasEnMes(anio, mes) {
+  return new Date(anio, mes+1, 0).getDate();
+}
+function primerDiaSemana(anio, mes) {
+  // 0=Dom, need Mon=0
+  const d = new Date(anio, mes, 1).getDay();
+  return d === 0 ? 6 : d - 1;
+}
+
+// ── STATS ──────────────────────────────────────────────────────────
+let totalDias = 0, totalOcupados = 0;
+MESES.forEach(({anio, mes}) => {
+  const last = diasEnMes(anio, mes);
+  totalDias += last;
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    if (getEstado(date).estado !== 'libre') totalOcupados++;
+  }
+});
+const totalLibres = totalDias - totalOcupados;
+document.getElementById('statsWrap').innerHTML = `
+  <div class="stat ocupado"><span class="val">${totalOcupados}</span><span class="lbl">Días ocupados</span></div>
+  <div class="stat libre"><span class="val">${totalLibres}</span><span class="lbl">Días libres</span></div>
+  <div class="stat"><span class="val">${RESERVAS.length}</span><span class="lbl">Reservas</span></div>
+`;
+
+// ── CALENDARIOS ──────────────────────────────────────────────────
+const calWrap = document.getElementById('calendarios');
+MESES.forEach(({anio, mes, nombre}) => {
+  const last = diasEnMes(anio, mes);
+  const firstDay = primerDiaSemana(anio, mes);
+  let ocupadosMes = 0;
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    if (getEstado(date).estado !== 'libre') ocupadosMes++;
+  }
+  const libresMes = last - ocupadosMes;
+
+  let headerExtra = '';
+  if (ocupadosMes > 0) headerExtra = `<span class="mes-ocupado">${ocupadosMes} días ocupados</span>`;
+  else headerExtra = `<span class="mes-libre">Todo libre ✓</span>`;
+
+  let html = `<div class="mes-card">
+    <div class="mes-header">
+      <span class="mes-nombre">${nombre} 2026</span>
+      ${headerExtra}
+    </div>
+    <div class="cal-grid">`;
+
+  // Header días
+  DIAS_NOMBRE.forEach((d,i) => {
+    const wk = i >= 5 ? ' weekend' : '';
+    html += `<div class="cal-header${wk}">${d}</div>`;
+  });
+
+  // Empty cells
+  for (let i = 0; i < firstDay; i++) html += `<div class="dia vacio"></div>`;
+
+  // Days
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    const {estado, reserva} = getEstado(date);
+    let cls = estado;
+    if (sameDay(date, hoy)) cls = 'hoy';
+    let tip = '';
+    if (reserva) {
+      const short = reserva.nombre.split(' ').slice(0,2).join(' ');
+      if (estado === 'entrada') tip = `data-tip="Entrada: ${short}"`;
+      else if (estado === 'salida') tip = `data-tip="Salida: ${short}"`;
+      else tip = `data-tip="${short}"`;
+    }
+    html += `<div class="dia ${cls}" ${tip}>${d}${tip ? `<div class="tooltip">${tip.match(/="([^"]+)"/)?.[1]||''}</div>` : ''}</div>`;
+  }
+
+  html += `</div></div>`;
+  calWrap.innerHTML += html;
+});
+
+// ── RESERVAS ──────────────────────────────────────────────────────
+const resWrap = document.getElementById('reservasList');
+RESERVAS.forEach((r, i) => {
+  const noches = Math.round((r.salida - r.entrada) / (1000*60*60*24));
+  const sena = Math.round(r.importe * 0.3);
+  const resto = r.importe - sena;
+  const fmtDate = d => `${d.getDate()} de ${MESES_NOMBRE[d.getMonth()]} de ${d.getFullYear()}`;
+
+  resWrap.innerHTML += `
+    <div class="reserva-card">
+      <div class="res-header">
+        <span class="res-num">Reserva ${i+1}</span>
+        <span class="res-estado">✓ Confirmada</span>
+      </div>
+      <div class="res-body">
+        <div class="res-row"><span class="res-k">Inquilinos</span><span class="res-v">${r.nombre}</span></div>
+        <div class="res-row"><span class="res-k">Entrada</span><span class="res-v">${fmtDate(r.entrada)} · 14:00h</span></div>
+        <div class="res-row"><span class="res-k">Salida</span><span class="res-v">${fmtDate(r.salida)} · 10:00h</span></div>
+        <div class="res-row"><span class="res-k">Noches</span><span class="res-v">${noches} noches</span></div>
+        <div class="res-row"><span class="res-k">Señal pagada (30%)</span><span class="res-v">${sena}€</span></div>
+        <div class="res-row"><span class="res-k">Resto a cobrar en llaves</span><span class="res-v">${resto}€</span></div>
+        <div class="res-row"><span class="res-k">Total</span><span class="res-v money">${r.importe}€</span></div>
+      </div>
+    </div>`;
+});
+
+// ── DISPONIBILIDAD ─────────────────────────────────────────────────
+const dispWrap = document.getElementById('dispList');
+MESES.forEach(({anio, mes, nombre}) => {
+  const last = diasEnMes(anio, mes);
+  let ocu = 0;
+  for (let d = 1; d <= last; d++) {
+    const date = new Date(anio, mes, d); date.setHours(0,0,0,0);
+    if (getEstado(date).estado !== 'libre') ocu++;
+  }
+  const lib = last - ocu;
+  const pct = Math.round(ocu/last*100);
+  dispWrap.innerHTML += `
+    <div class="disp-row">
+      <span class="disp-mes">${nombre}</span>
+      <div class="disp-bar-wrap"><div class="disp-bar" style="width:${pct}%"></div></div>
+      <span class="disp-info">${ocu > 0 ? `<span style="color:var(--ocupado-t)">${ocu} ocupados</span>` : ''} <span class="disp-libre">${lib} libres</span></span>
+    </div>`;
+});
+</script>
+</body>
+</html>
